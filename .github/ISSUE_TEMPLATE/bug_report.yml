@@ -1,0 +1,35 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you see instead? Screenshots help.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to Settings → Rating Glance
+        2. …
+  - type: dropdown
+    id: placement
+    attributes:
+      label: How is it added to the site?
+      options: [Block, Widget, Shortcode, Not relevant]
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      placeholder: Plugin 1.0.0, WordPress 6.8, PHP 8.3, theme name
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: Error shown under "Current ratings" (if any)
+      description: Please remove your API key if it appears anywhere.

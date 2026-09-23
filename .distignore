@@ -1,0 +1,14 @@
+.git
+.github
+.gitignore
+.gitattributes
+.distignore
+.editorconfig
+.release-please-manifest.json
+release-please-config.json
+version.txt
+README.md
+CHANGELOG.md
+scripts
+docs
+dist
