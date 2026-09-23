@@ -4,7 +4,7 @@
  * Description:       Show your Google and Tripadvisor rating at a glance: score, number of reviews and a link. Fetched via SerpApi and cached, so it never slows your pages down.
  * Plugin URI:        https://github.com/visco-horeca/rating-glance
  * x-release-please-start-version
- * Version:           1.0.0
+ * Version:           1.1.0
  * x-release-please-end
  * Requires at least: 6.2
  * Requires PHP:      7.4
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'RATING_GLANCE_VERSION', '1.0.0' ); // x-release-please-version
+define( 'RATING_GLANCE_VERSION', '1.1.0' ); // x-release-please-version
 define( 'RATING_GLANCE_FILE', __FILE__ );
 define( 'RATING_GLANCE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'RATING_GLANCE_URL', plugin_dir_url( __FILE__ ) );
