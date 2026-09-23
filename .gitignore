@@ -1,0 +1,13 @@
+# Build output
+dist/
+*.zip
+
+# Local docs, notes and plans
+docs/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

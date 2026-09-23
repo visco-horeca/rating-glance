@@ -1,0 +1,101 @@
+/*
+ * Rating Glance: inherits font, size and color from wherever it is placed.
+ * Override these on .rating-glance (or a parent) to fine-tune.
+ */
+.rating-glance {
+	--rg-gap: 0.5em 1.75em;
+	--rg-inner-gap: 0.4em;
+	--rg-star-color: currentColor;
+	--rg-star-empty-opacity: 0.3;
+	--rg-count-opacity: 0.75;
+
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--rg-gap);
+	margin: 0;
+	padding: 0;
+	color: inherit;
+	font: inherit;
+	line-height: 1.4;
+}
+
+.rating-glance--align-center { justify-content: center; }
+.rating-glance--align-end { justify-content: flex-end; }
+
+.rating-glance--stacked {
+	flex-direction: column;
+	align-items: flex-start;
+	--rg-gap: 0.35em;
+}
+.rating-glance--stacked.rating-glance--align-center { align-items: center; }
+.rating-glance--stacked.rating-glance--align-end { align-items: flex-end; }
+
+.rating-glance .rating-glance__item,
+.rating-glance a.rating-glance__item,
+.rating-glance a.rating-glance__item:visited {
+	display: inline-flex;
+	color: inherit;
+	text-decoration: none;
+	box-shadow: none;
+	border: 0;
+}
+
+.rating-glance__content {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0 var(--rg-inner-gap);
+}
+
+.rating-glance a.rating-glance__item:hover .rating-glance__label,
+.rating-glance a.rating-glance__item:focus-visible .rating-glance__label {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+	text-decoration-thickness: 1px;
+}
+
+.rating-glance a.rating-glance__item:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+.rating-glance__label { font-weight: 600; }
+
+.rating-glance__score {
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.rating-glance__max { font-weight: 400; opacity: var(--rg-count-opacity); }
+
+.rating-glance__count {
+	opacity: var(--rg-count-opacity);
+	font-size: 0.9em;
+	font-variant-numeric: tabular-nums;
+}
+
+.rating-glance__star { color: var(--rg-star-color); }
+
+/* Five stars, partially filled: a dimmed row with a clipped full row on top. */
+.rating-glance__stars {
+	position: relative;
+	display: inline-block;
+	line-height: 1;
+	white-space: nowrap;
+	letter-spacing: 0;
+}
+.rating-glance__stars::before {
+	content: "\2605\2605\2605\2605\2605";
+	opacity: var(--rg-star-empty-opacity);
+}
+.rating-glance__stars::after {
+	content: "\2605\2605\2605\2605\2605";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: var(--rg-fill, 0%);
+	overflow: hidden;
+	color: var(--rg-star-color);
+}

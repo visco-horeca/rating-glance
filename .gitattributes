@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.sh text eol=lf
+
+# Keep dev files out of GitHub's "Source code" archives
+/.github export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.distignore export-ignore
+/.editorconfig export-ignore
+/.release-please-manifest.json export-ignore
+/release-please-config.json export-ignore
+/version.txt export-ignore
+/scripts export-ignore
