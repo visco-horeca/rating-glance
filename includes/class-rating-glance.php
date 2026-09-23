@@ -262,6 +262,14 @@ final class Rating_Glance {
 		return $body;
 	}
 
+	/** A rating as a float, or null. Localized results may use a decimal comma ("4,5"). */
+	public static function parse_rating( $value ) {
+		if ( is_string( $value ) ) {
+			$value = str_replace( ',', '.', trim( $value ) );
+		}
+		return is_numeric( $value ) && $value > 0 ? round( (float) $value, 1 ) : null;
+	}
+
 	/** Fetch the current rating for one source. */
 	public static function fetch( $key, array $ref ) {
 		if ( 'google' === $key ) {
@@ -287,8 +295,8 @@ final class Rating_Glance {
 				$params['tripadvisor_domain'] = $ref['domain'];
 			}
 			$body = self::request( $params );
-			if ( is_wp_error( $body ) && $ref['domain'] ) {
-				// Unsupported regional domain: retry on the default one.
+			if ( $ref['domain'] && ( is_wp_error( $body ) || null === self::parse_rating( isset( $body['place_result']['rating'] ) ? $body['place_result']['rating'] : null ) ) ) {
+				// Unsupported regional domain or no rating there: retry on the default one.
 				unset( $params['tripadvisor_domain'] );
 				$body = self::request( $params );
 			}
@@ -302,13 +310,14 @@ final class Rating_Glance {
 			return new WP_Error( 'rating_glance_source', __( 'Unknown source.', 'rating-glance' ) );
 		}
 
-		if ( ! isset( $place['rating'] ) || ! is_numeric( $place['rating'] ) ) {
+		$rating = self::parse_rating( isset( $place['rating'] ) ? $place['rating'] : null );
+		if ( null === $rating ) {
 			return new WP_Error( 'rating_glance_no_rating', __( 'No rating found for this place. Check the place ID.', 'rating-glance' ) );
 		}
 
 		return array(
 			'name'   => $name,
-			'rating' => round( (float) $place['rating'], 1 ),
+			'rating' => $rating,
 			'count'  => isset( $place['reviews'] ) ? (int) preg_replace( '/\D/', '', (string) $place['reviews'] ) : null,
 			'url'    => esc_url_raw( $url ),
 		);
