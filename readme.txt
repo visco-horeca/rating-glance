@@ -16,6 +16,7 @@ A small, dependency-free plugin that shows your Google and Tripadvisor rating at
 Google ★★★★★ 4.6 · 1,234 reviews    Tripadvisor ★★★★★ 4.5 · 312 reviews
 
 * Block (Site Editor / footer template part), classic widget and `[rating_glance]` shortcode.
+* Links to your Google Maps place and Tripadvisor page, with the Google and Tripadvisor logo in your text color or in brand colors.
 * Inherits your theme's font, size and text color. Works on light and dark backgrounds.
 * Ratings are fetched in the background via SerpApi (https://serpapi.com) and cached. Visitors never wait on an external API.
 * If a fetch fails, the last known values stay visible.
@@ -36,9 +37,10 @@ This plugin connects to SerpApi (https://serpapi.com) to read the public rating 
 
 == Shortcode ==
 
-`[rating_glance sources="google,tripadvisor" display="stars" count="text" layout="inline" align="start" label="yes"]`
+`[rating_glance sources="google,tripadvisor" display="stars" icon="mono" count="text" layout="inline" align="start" label="yes"]`
 
 * display: stars | compact | text
+* icon: mono | color | none
 * count: text ("250 reviews") | number ("(250)") | none
 * layout: inline | stacked
 * align: start | center | end
@@ -50,9 +52,13 @@ This plugin connects to SerpApi (https://serpapi.com) to read the public rating 
 
 The output uses `currentColor` and `font: inherit`. Fine-tune with CSS variables on `.rating-glance`:
 
-`--rg-gap`, `--rg-inner-gap`, `--rg-star-color`, `--rg-star-empty-opacity`, `--rg-count-opacity`.
+`--rg-gap`, `--rg-inner-gap`, `--rg-icon-size`, `--rg-star-color`, `--rg-star-empty-opacity`, `--rg-count-opacity`.
 
 Example (gold stars): `.rating-glance { --rg-star-color: #e0a526; }`
+
+== Trademarks ==
+
+Google and Tripadvisor names and logos are trademarks of their respective owners, used only to link to the business's own listing. This plugin is not affiliated with or endorsed by either company. Icons: Simple Icons (CC0) and the Google "G" from Wikimedia Commons (public domain).
 
 == Changelog ==
 

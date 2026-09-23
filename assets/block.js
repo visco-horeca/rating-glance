@@ -64,6 +64,11 @@
 								{ value: 'compact', label: __( 'One star + score', 'rating-glance' ) },
 								{ value: 'text', label: __( 'Score only (4.6/5)', 'rating-glance' ) },
 							], function ( v ) { set( { display: v } ); } ),
+							select( __( 'Logo', 'rating-glance' ), a.icon, [
+								{ value: 'mono', label: __( 'Logo in text color', 'rating-glance' ) },
+								{ value: 'color', label: __( 'Logo in brand colors', 'rating-glance' ) },
+								{ value: 'none', label: __( 'No logo', 'rating-glance' ) },
+							], function ( v ) { set( { icon: v } ); } ),
 							select( __( 'Review count', 'rating-glance' ), a.countStyle, [
 								{ value: 'text', label: __( '1,234 reviews', 'rating-glance' ) },
 								{ value: 'number', label: __( '(1,234)', 'rating-glance' ) },
