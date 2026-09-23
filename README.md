@@ -2,9 +2,7 @@
 
 A small WordPress plugin that shows your **Google** and **Tripadvisor** rating at a glance: score, number of reviews and a link to the review page. Made for restaurant and business footers, but it works anywhere.
 
-```
-[G] Google ★★★★★ 4.6  1,234 reviews     [owl] Tripadvisor ★★★★★ 4.5  312 reviews
-```
+![Rating Glance in four footer styles: dark with logos in text color, cream with brand-colored logos and a serif theme font, compact without labels, and stacked text-only on dark green](.github/screenshots/styles.png)
 
 - **Block**, **classic widget** and **`[rating_glance]` shortcode**, so it works with block themes, classic themes and page builders (Elementor, Divi, …).
 - **Links to your listings**: each rating links to your Google Maps place and Tripadvisor page, with the Google and Tripadvisor logos in your text color or in brand colors.
@@ -21,6 +19,8 @@ A small WordPress plugin that shows your **Google** and **Tripadvisor** rating a
 2. Go to **Settings → Rating Glance** and enter a [SerpApi key](https://serpapi.com/manage-api-key). The free plan is enough: a daily refresh uses about 60 searches a month.
 3. Click **Find** next to Google and Tripadvisor, pick your business, and save.
 4. Add the **Rating Glance** block, widget or `[rating_glance]` shortcode to your footer.
+
+<p align="center"><img src=".github/screenshots/settings.png" width="720" alt="Settings page with a live preview, current ratings table, SerpApi key field and the place finder"></p>
 
 ## Shortcode
 
