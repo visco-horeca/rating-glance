@@ -25,6 +25,7 @@ class Rating_Glance_Widget extends WP_Widget {
 			'layout'      => 'inline',
 			'align'       => 'start',
 			'count_style' => 'text',
+			'icon'        => 'mono',
 			'show_label'  => 1,
 		);
 		foreach ( array_keys( Rating_Glance::sources() ) as $key ) {
@@ -50,6 +51,7 @@ class Rating_Glance_Widget extends WP_Widget {
 				'layout'      => $instance['layout'],
 				'align'       => $instance['align'],
 				'count_style' => $instance['count_style'],
+				'icon'        => $instance['icon'],
 				'show_label'  => ! empty( $instance['show_label'] ),
 			)
 		);
@@ -85,6 +87,7 @@ class Rating_Glance_Widget extends WP_Widget {
 		</p>
 		<?php
 		$selects = array(
+			'icon'        => __( 'Logo:', 'rating-glance' ),
 			'display'     => __( 'Style:', 'rating-glance' ),
 			'count_style' => __( 'Review count:', 'rating-glance' ),
 			'layout'      => __( 'Layout:', 'rating-glance' ),
@@ -119,7 +122,7 @@ class Rating_Glance_Widget extends WP_Widget {
 		foreach ( array_keys( Rating_Glance::sources() ) as $key ) {
 			$instance[ $key ] = empty( $new_instance[ $key ] ) ? 0 : 1;
 		}
-		foreach ( array( 'display', 'layout', 'align', 'count_style' ) as $field ) {
+		foreach ( array( 'display', 'layout', 'align', 'count_style', 'icon' ) as $field ) {
 			$value              = isset( $new_instance[ $field ] ) ? $new_instance[ $field ] : '';
 			$instance[ $field ] = isset( $choices[ $field ][ $value ] ) ? $value : key( $choices[ $field ] );
 		}

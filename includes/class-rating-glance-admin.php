@@ -365,6 +365,7 @@ final class Rating_Glance_Admin {
 				<tr><td><code>sources="google,tripadvisor"</code></td><td><?php esc_html_e( 'Which sources to show, in this order.', 'rating-glance' ); ?></td></tr>
 				<tr><td><code>display="stars|compact|text"</code></td><td><?php esc_html_e( 'Five stars, one star, or plain score.', 'rating-glance' ); ?></td></tr>
 				<tr><td><code>count="text|number|none"</code></td><td><?php esc_html_e( '"250 reviews", "(250)" or hidden.', 'rating-glance' ); ?></td></tr>
+				<tr><td><code>icon="mono|color|none"</code></td><td><?php esc_html_e( 'Google/Tripadvisor logo in text color, in brand colors, or hidden.', 'rating-glance' ); ?></td></tr>
 				<tr><td><code>layout="inline|stacked"</code></td><td><?php esc_html_e( 'Side by side or below each other.', 'rating-glance' ); ?></td></tr>
 				<tr><td><code>align="start|center|end"</code></td><td><?php esc_html_e( 'Horizontal alignment.', 'rating-glance' ); ?></td></tr>
 				<tr><td><code>label="yes|no"</code></td><td><?php esc_html_e( 'Show the source name.', 'rating-glance' ); ?></td></tr>
@@ -373,7 +374,7 @@ final class Rating_Glance_Admin {
 			</tbody>
 		</table>
 		<p class="description">
-			<?php esc_html_e( 'The output uses your theme\'s font and text color. Fine-tune with CSS variables on .rating-glance: --rg-gap, --rg-star-color, --rg-star-empty-opacity.', 'rating-glance' ); ?>
+			<?php esc_html_e( 'The output uses your theme\'s font and text color. Fine-tune with CSS variables on .rating-glance: --rg-gap, --rg-icon-size, --rg-star-color, --rg-star-empty-opacity.', 'rating-glance' ); ?>
 		</p>
 		<?php
 	}
