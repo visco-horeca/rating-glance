@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/visco-horeca/rating-glance/compare/v1.1.0...v1.1.1) (2026-09-23)
+
+
+### Bug Fixes
+
+* read Tripadvisor ratings from regional domains ([c6e7ef9](https://github.com/visco-horeca/rating-glance/commit/c6e7ef9fc81070042cd79a8f8958e8d6933bf82b))
+* read Tripadvisor ratings from regional domains ([ac7bf4f](https://github.com/visco-horeca/rating-glance/commit/ac7bf4f02148a71a9e59780e8255bc2714859f99))
+
 ## [1.1.0](https://github.com/visco-horeca/rating-glance/compare/v1.0.0...v1.1.0) (2026-09-23)
 
 
