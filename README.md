@@ -22,6 +22,18 @@ A small WordPress plugin that shows your **Google** and **Tripadvisor** rating a
 
 <p align="center"><img src=".github/screenshots/settings.png" width="720" alt="Settings page with a live preview, current ratings table, SerpApi key field and the place finder"></p>
 
+## Updating
+
+Rating Glance isn't in the WordPress.org plugin directory, so WordPress won't notify you about new versions or update it automatically. To update:
+
+1. Download the new **[rating-glance.zip](https://github.com/visco-horeca/rating-glance/releases/latest/download/rating-glance.zip)** from the [latest release](https://github.com/visco-horeca/rating-glance/releases/latest). The [changelog](CHANGELOG.md) lists what changed.
+2. Go to **Plugins → Add New → Upload Plugin** and upload it.
+3. WordPress sees the plugin is already installed. Click **Replace current with uploaded**.
+
+Your settings and cached ratings are kept. Don't delete the old version first: deleting the plugin removes its settings, including your API key and place IDs.
+
+To get notified of new releases, click **Watch → Custom → Releases** on this GitHub repository.
+
 ## Shortcode
 
 ```
