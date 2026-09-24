@@ -270,6 +270,20 @@ final class Rating_Glance {
 		return is_numeric( $value ) && $value > 0 ? round( (float) $value, 1 ) : null;
 	}
 
+	/** The Tripadvisor search result for a place ID, found by searching its name, or null. */
+	private static function find_tripadvisor_place( $name, $id ) {
+		$body = self::request( array( 'engine' => 'tripadvisor', 'q' => $name ) );
+		if ( is_wp_error( $body ) || empty( $body['places'] ) ) {
+			return null;
+		}
+		foreach ( (array) $body['places'] as $place ) {
+			if ( isset( $place['place_id'] ) && (string) $place['place_id'] === (string) $id ) {
+				return (array) $place;
+			}
+		}
+		return null;
+	}
+
 	/** Fetch the current rating for one source. */
 	public static function fetch( $key, array $ref ) {
 		if ( 'google' === $key ) {
@@ -295,8 +309,8 @@ final class Rating_Glance {
 				$params['tripadvisor_domain'] = $ref['domain'];
 			}
 			$body = self::request( $params );
-			if ( $ref['domain'] && ( is_wp_error( $body ) || null === self::parse_rating( isset( $body['place_result']['rating'] ) ? $body['place_result']['rating'] : null ) ) ) {
-				// Unsupported regional domain or no rating there: retry on the default one.
+			if ( is_wp_error( $body ) && $ref['domain'] ) {
+				// Unsupported regional domain: retry on the default one.
 				unset( $params['tripadvisor_domain'] );
 				$body = self::request( $params );
 			}
@@ -306,6 +320,18 @@ final class Rating_Glance {
 			$place = isset( $body['place_result'] ) ? (array) $body['place_result'] : array();
 			$name  = isset( $place['name'] ) ? (string) $place['name'] : '';
 			$url   = $ref['url'] ? $ref['url'] : ( isset( $place['link'] ) ? (string) $place['link'] : '' );
+
+			if ( null === self::parse_rating( isset( $place['rating'] ) ? $place['rating'] : null ) && '' !== $name ) {
+				// The place result sometimes lacks the overall rating; search results still carry it.
+				$match = self::find_tripadvisor_place( $name, $ref['id'] );
+				if ( $match ) {
+					$place['rating']  = isset( $match['rating'] ) ? $match['rating'] : null;
+					$place['reviews'] = isset( $match['reviews'] ) ? $match['reviews'] : null;
+					if ( '' === $url && ! empty( $match['link'] ) ) {
+						$url = (string) $match['link'];
+					}
+				}
+			}
 		} else {
 			return new WP_Error( 'rating_glance_source', __( 'Unknown source.', 'rating-glance' ) );
 		}
