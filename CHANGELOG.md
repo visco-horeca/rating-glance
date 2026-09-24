@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/visco-horeca/rating-glance/compare/v1.1.1...v1.1.2) (2026-09-24)
+
+
+### Bug Fixes
+
+* fall back to Tripadvisor search when the place has no rating ([d624a40](https://github.com/visco-horeca/rating-glance/commit/d624a40c6de550c5f0e941315779616d111a61d0))
+* fall back to Tripadvisor search when the place has no rating ([52bce71](https://github.com/visco-horeca/rating-glance/commit/52bce71599c6cbf1fd25c1e993390c92059e7803))
+
 ## [1.1.1](https://github.com/visco-horeca/rating-glance/compare/v1.1.0...v1.1.1) (2026-09-23)
 
 
